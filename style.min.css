@@ -1357,7 +1357,7 @@ section.home-cards .card .overlay.o2,section.home-cards .card .overlay.o4,sectio
 section.home-cards .card .overlay h2{width:100%;text-align:center;color:#fff}
 .banner-top-text{position:relative;height:40px;overflow:hidden;background:#b16b4f}
 .banner-top-text .wrapper{height:100%}
-.banner-top-text .reg-button{display:inline-block;position:absolute;top:0;left:0;height:100%}
+.banner-top-text .reg-button{display:inline-block;position:absolute;top:0;left:0;height:100%;z-index:15}
 .banner-top-text .reg-button a{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-line-pack:center;align-content:center;text-decoration:none;width:120px;height:100%;text-align:center;padding:5px 10px;background:#b3a759;color:#fff;font-size:15px;line-height:1.1;text-transform:uppercase}
 .banner-top-text .middle-text{text-align:center;font-family:"Eckmannpsych","Hind Siliguri",sans-serif;font-size:36px;font-weight:bold;letter-spacing:2px;line-height:1.1;position:relative;top:-3px;color:#fff;text-transform:uppercase}
 #content{background-image:url("images/floral.svg");background-position:center}

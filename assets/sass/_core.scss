@@ -681,6 +681,7 @@ section.home-cards {
     top: 0;
     left: 0;
     height: 100%;
+    z-index: 15;
     a {
       display: flex;
       flex-wrap: wrap;
