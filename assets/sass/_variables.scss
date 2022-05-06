@@ -2,36 +2,36 @@
   font-display: swap;
   font-family: 'Recoleta';
   font-weight: 400;
-  src: url( '../fonts/recoleta/400.woff2' ) format( 'woff2' ),
-    url( '../fonts/recoleta/400.woff' ) format( 'woff' );
+  src: url( 'fonts/recoleta/400.woff2' ) format( 'woff2' ),
+    url( 'fonts/recoleta/400.woff' ) format( 'woff' );
 }
 @font-face {
   font-display: swap;
   font-family: 'Recoleta';
   font-weight: 500;
-  src: url( '../fonts/recoleta/500.woff2' ) format( 'woff2' ),
-    url( '../fonts/recoleta/500.woff' ) format( 'woff' );
+  src: url( 'fonts/recoleta/500.woff2' ) format( 'woff2' ),
+    url( 'fonts/recoleta/500.woff' ) format( 'woff' );
 }
 @font-face {
   font-display: swap;
   font-family: 'Recoleta';
   font-weight: 600;
-  src: url( '../fonts/recoleta/600.woff2' ) format( 'woff2' ),
-    url( '../fonts/recoleta/600.woff' ) format( 'woff' );
+  src: url( 'fonts/recoleta/600.woff2' ) format( 'woff2' ),
+    url( 'fonts/recoleta/600.woff' ) format( 'woff' );
 }
 @font-face {
   font-display: swap;
   font-family: 'Eckmannpsych';
-  src: url('../fonts/eckmannpsych/eckmannpsych-large-webfont.woff2') format('woff2'),
-      url('../fonts/eckmannpsych/eckmannpsych-large-webfont.woff') format('woff');
+  src: url('fonts/eckmannpsych/eckmannpsych-large-webfont.woff2') format('woff2'),
+      url('fonts/eckmannpsych/eckmannpsych-large-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-display: swap;
   font-family: 'StoryBook';
-  src: url('../fonts/storybook.woff2') format('woff2'),
-       url('../fonts/storybook.woff') format('woff');
+  src: url('fonts/storybook.woff2') format('woff2'),
+       url('fonts/storybook.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -39,11 +39,11 @@
 @font-face {
   font-display: swap;
   font-family: 'Brandon Grotesque';
-  src: url('../fonts/brandon-grotesque/brandon-grotesque-regular.eot'); /* IE9 Compat Modes */
-  src: url('../fonts/brandon-grotesque/brandon-grotesque-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/brandon-grotesque/brandon-grotesque-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/brandon-grotesque/brandon-grotesque-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/brandon-grotesque/brandon-grotesque-regular.svg#354fd4633228a7e3ae69c73de8c58871') format('svg'); /* Legacy iOS */
+  src: url('fonts/brandon-grotesque/brandon-grotesque-regular.eot'); /* IE9 Compat Modes */
+  src: url('fonts/brandon-grotesque/brandon-grotesque-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/brandon-grotesque/brandon-grotesque-regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/brandon-grotesque/brandon-grotesque-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/brandon-grotesque/brandon-grotesque-regular.svg#354fd4633228a7e3ae69c73de8c58871') format('svg'); /* Legacy iOS */
   font-style:   normal;
   font-weight:  normal;
 }
