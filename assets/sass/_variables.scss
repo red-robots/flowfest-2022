@@ -1,15 +1,79 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Recoleta';
+  font-weight: 400;
+  src: url( '../fonts/recoleta/400.woff2' ) format( 'woff2' ),
+    url( '../fonts/recoleta/400.woff' ) format( 'woff' );
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Recoleta';
+  font-weight: 500;
+  src: url( '../fonts/recoleta/500.woff2' ) format( 'woff2' ),
+    url( '../fonts/recoleta/500.woff' ) format( 'woff' );
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Recoleta';
+  font-weight: 600;
+  src: url( '../fonts/recoleta/600.woff2' ) format( 'woff2' ),
+    url( '../fonts/recoleta/600.woff' ) format( 'woff' );
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Eckmannpsych';
+  src: url('../fonts/eckmannpsych-large-webfont.woff2') format('woff2'),
+      url('../fonts/eckmannpsych-large-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-display: swap;
+  font-family: 'StoryBook';
+  src: url('../fonts/storybook.woff2') format('woff2'),
+       url('../fonts/storybook.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Brandon Grotesque';
+  src: url('../fonts/brandon-grotesque/brandon-grotesque-regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/brandon-grotesque/brandon-grotesque-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/brandon-grotesque/brandon-grotesque-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/brandon-grotesque/brandon-grotesque-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/brandon-grotesque/brandon-grotesque-regular.svg#354fd4633228a7e3ae69c73de8c58871') format('svg'); /* Legacy iOS */
+  font-style:   normal;
+  font-weight:  normal;
+}
+
+
 $color_link: royalblue;
 $color_link_visited: purple;
 $color_link_hover: midnightblue;
 $color_text_main: #404040;
 
-$color-green: #075b5c;
+$color-green: #295a5b;
 $color-yellow: #b4a859;
 $color-orange: #be6748;
 $color-tan: #e7d8cc;
+$color-gold: #B3A759;
+$color-brown: #b16b4f;
 
-$font_main: 'Roboto', sans-serif;
-$font_secondary: 'Roboto', sans-serif;
+
+$font1: 'Hind Siliguri', sans-serif;
+$font2: 'Recoleta', sans-serif;
+$font4: 'Nunito Sans', sans-serif;
+$font_heading1: 'Eckmannpsych', 'Hind Siliguri', sans-serif;
+$font_heading2: 'StoryBook', 'Hind Siliguri', sans-serif;
+
+// $font1: 'Recoleta', serif;
+// $font2: 'DM Sans', sans-serif;
+// $font3: 'Rubik', sans-serif;
+// $font4: 'Open Sans', sans-serif;
+// $font5: 'EB Garamond', serif;
+
 $font_code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font_pre: "Courier 10 Pitch", Courier, monospace;
 

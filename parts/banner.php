@@ -23,8 +23,27 @@ $excludePostTypes = exclude_post_types_banner();
 if ( is_singular( get_post_type() ) && in_array(get_post_type(),$excludePostTypes) ) {
 	$is_default_slide = false;
 }
+?>
 
-if($is_default_slide) { ?>
+<?php /* REGISTER */ ?>
+<?php
+$register_button_text = get_field('register_button_text','option'); 
+$register_link = get_field('register_link','option'); 
+$top_text = get_field('banner_top_text',$post_id);
+if ( $top_text ) { ?>
+<div class="banner-top-text">
+  <div class="wrapper">
+    <?php if ( $register_button_text && $register_link ) { ?>
+    <div class="reg-button">
+      <a href="<?php echo $register_link ?>" target="_blank" class="register-btn"><?php echo $register_button_text ?></a>
+    </div>
+    <?php } ?>
+    <div class="middle-text"><?php echo $top_text ?></div>
+  </div>
+</div>
+<?php } ?>
+
+<?php if($is_default_slide) { ?>
 	<?php 
 	$flexslider = get_field( "flexslider_banner",$post_id);
 	$slidesCount = ($flexslider) ? count($flexslider) : 0;
