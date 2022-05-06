@@ -42,7 +42,7 @@
 		</div><!-- wrapper -->
 	</header><!-- #masthead -->
 
-	<?php if( !is_front_page()) {get_template_part('parts/pagetitle');} ?>
+	<?php if( !is_front_page()) { get_template_part('parts/pagetitle'); } ?>
 	<?php get_template_part('parts/banner'); ?>
 
 	<div id="content" class="site-content">
