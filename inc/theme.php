@@ -16,9 +16,33 @@ function my_login_logo() {
   $logo_url = ($logoImg) ? $logoImg[0] : '';
   if($custom_logo_id) { ?>
   <style type="text/css">
+    body.login {
+      background: #035455;
+    }
+    body.login:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url('<?php echo get_stylesheet_directory_uri() ?>/images/floral-seamless.png');
+      background-size: 50px;
+      opacity: 0.04;
+    }
+    body.login div#login {
+      position: relative;
+      z-index: 10;
+    }
+    body.login div#login form {
+      border: none;
+    }
     body.login div#login h1 a {
       background-image: url(<?php echo $logo_url; ?>);
       background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
       width: 100%;
       height: 100px;
       margin-bottom: 10px;
@@ -26,7 +50,32 @@ function my_login_logo() {
     .login #backtoblog, .login #nav {
       text-align: center;
     }
-
+    body.login div#login p.submit {
+      width: 100%; 
+      margin-top: 35px;
+    }
+    body.login div#login p.submit input.button {
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+    }
+    body.login.wp-core-ui .button-primary {
+      font-size: 13px;
+      font-weight: bold;
+      background: #035455;
+      border-color: #024949;
+      transition: all ease .3s;
+    }
+    body.login.wp-core-ui .button-primary:hover {
+      background: #05787a;
+      border-color: #05787a;
+    }
+    body.login div#login a {
+      color: #e7d8cc;
+    }
+    body.login div#login a:hover {
+      color: #fcffb0;
+    }
   </style>
 <?php }
 }
