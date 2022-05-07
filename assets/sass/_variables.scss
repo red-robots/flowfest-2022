@@ -27,34 +27,13 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-display: swap;
-  font-family: 'StoryBook';
-  src: url('fonts/storybook.woff2') format('woff2'),
-       url('fonts/storybook.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Brandon Grotesque';
-  src: url('fonts/brandon-grotesque/brandon-grotesque-regular.eot'); /* IE9 Compat Modes */
-  src: url('fonts/brandon-grotesque/brandon-grotesque-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/brandon-grotesque/brandon-grotesque-regular.woff') format('woff'), /* Modern Browsers */
-       url('fonts/brandon-grotesque/brandon-grotesque-regular.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('fonts/brandon-grotesque/brandon-grotesque-regular.svg#354fd4633228a7e3ae69c73de8c58871') format('svg'); /* Legacy iOS */
-  font-style:   normal;
-  font-weight:  normal;
-}
-
 
 $color_link: royalblue;
 $color_link_visited: purple;
 $color_link_hover: midnightblue;
 $color_text_main: #404040;
 
-$color-green: #295a5b;
+$color-green: #035455;
 $color-yellow: #b4a859;
 $color-orange: #be6748;
 $color-tan: #e7d8cc;
@@ -62,11 +41,10 @@ $color-gold: #B3A759;
 $color-brown: #b16b4f;
 
 
-$font1: 'Hind Siliguri', sans-serif;
-$font2: 'Recoleta', sans-serif;
-$font4: 'Nunito Sans', sans-serif;
+$font1: 'Hind', sans-serif;
+$font2: 'Cinzel', serif;
+$font3: 'Aladin', cursive;
 $font_heading1: 'Eckmannpsych', 'Hind Siliguri', sans-serif;
-$font_heading2: 'StoryBook', 'Hind Siliguri', sans-serif;
 
 // $font1: 'Recoleta', serif;
 // $font2: 'DM Sans', sans-serif;
@@ -78,7 +56,7 @@ $font_code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font_pre: "Courier 10 Pitch", Courier, monospace;
 
 $xswidth: 480px;
-$tabwidth: 600px;
+$tabwidth: 767px;
 $midwidth: 900px;
 $deskwidth: 1200px;
 
@@ -179,4 +157,19 @@ $deskwidth: 1200px;
   @return mix(black, $color, $percentage);
 }
 
+@mixin backgroundImage($position:center) {
+  background-size: cover;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
 
+
+@mixin animateThis($duration:1s) {
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animateEffect($effect:fadeIn) {
+  -webkit-animation-name: $effect;
+  animation-name: $effect;
+}

@@ -71,6 +71,11 @@ body {
 		padding: 0;
 	}
 }
+.site {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 .head-flex, .foot-flex, .pagetitle-flex {
 	@include tab() {
 		display: flex;
@@ -83,10 +88,28 @@ body {
 header.site-header {
   position: relative;
 	width: 100%;
-	// background-image: url(images/green-repeat.png);
   background-color: $color-green;
   .wrapper {
     z-index: 10;
+    @include flexbox-justify(center);
+  }
+  height: 60px;
+  @include tab {
+    height: auto;
+  }
+  @media screen and (max-width: $tabwidth) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    .wrapper {
+      width: 100%;
+      height: 100%;
+    }
+    #site-logo {
+      left: 20px;
+    }
   }
 }
 .floral-pattern {
@@ -100,7 +123,7 @@ header.site-header {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: .08;
+    opacity: .07;
     background: {
       image:url('images/floral-seamless.png');
       repeat: repeat;
@@ -109,6 +132,13 @@ header.site-header {
   }
 }
 #site-logo {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   a {
     display: flex;
     flex-wrap: wrap;
@@ -220,12 +250,62 @@ footer.site-footer {
 			padding: 10px 25px;
 			color: $color-tan;
 			text-decoration: none;
+      opacity: 0.65;
 			&:hover {
+        opacity: 1;
 				color: #fff;
 			}
 		}
 	}
 }
+
+/* Mobile Menu */
+#mobile-menu-toggle {
+  display: none;
+  width: 50px;
+  height:  60px;
+  position: fixed;
+  top: 0;
+  right: 15px;
+  text-align: center;
+  span.bar {
+    display: block;
+    width: 25px;
+    margin:0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  span.bar, span.bar:before, span.bar:after {
+    position: absolute;
+    height: 2px;
+    background: #FFF;
+    transition: all ease .2s;
+  }
+  span.bar:before, span.bar:after {
+    content:"";
+    display: block;
+    width: 100%;
+  }
+  span.bar:before {
+    top: -10px;
+  }
+  span.bar:after {
+    top: 10px;
+  }
+  &.active {
+    span.bar {
+      transform: translateX(-10px) rotate(45deg);
+    }
+    span.bar:before {
+      transform: translateY(10px) rotate(90deg);
+    }
+    span.bar:after {
+      transform: translateY(-10px) rotate(-90deg);
+    }
+  }
+}
+
 /* Slider */
 #banner {
 	width: 100%;
@@ -667,10 +747,106 @@ section.home-cards {
 		}
 	}
 }
+section.home-cards-new {
+  margin-left: -10px;
+  margin-right: -10px;
+  .cards {
+    @include flexgroup();
+  }
+  .card {
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    @include tab {
+      width: 33.33%;
+    }
+    a {
+      display: block;
+      width: 100%;
+      float: left;
+      position: relative;
+      background-color: $color-green;
+      color: #FFF;
+      overflow: hidden;
+      text-decoration: none;
+      @include tab {
+        height: 100%;
+      }
+      * {
+        transition: all ease .3s;
+      }
+    }
+    figure, figure img, .card-info {
+      width: 100%;
+      float: left;
+    }
+    figure {
+      margin: 0 0;
+      padding: 0 0 40px;
+      @include backgroundImage(center);
+      img {
+        height: auto;
+      }
+    }
+
+    .card-info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 15;
+      background-color: $color-green;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      @include tab {
+        min-height: 40px;
+      }
+      &:before {
+        content:"";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .08;
+        background: {
+          image:url('images/floral-seamless.png');
+          repeat: repeat;
+          size: 50px;
+        }
+      }
+      h2 {
+        margin: 0 0;
+        font-family: $font2;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 8px 15px;
+        position: relative;
+        top: 1px;
+        z-index: 5;
+      }
+    }
+    a:hover {
+      figure {
+        transform: scale(1.06);
+      }
+      .card-info {
+        background-color: $color-gold;
+        &:before {
+          opacity: 0.1;
+        }
+      }
+    }
+  }
+}
 .banner-top-text {
   position: relative;
-  height: 40px;
-  overflow: hidden;
+  height: 45px;
   background: $color-brown;
   .wrapper {
     height: 100%;
@@ -688,22 +864,58 @@ section.home-cards {
       justify-content: center;
       align-content: center;
       text-decoration: none;
-      width: 120px;
+      width: 166px;
       height: 100%;
       text-align: center;
-      padding: 5px 10px;
+      padding: 6px 10px 4px;
       background: $color-gold;
       color: #FFF;
       font-size: 15px;
+      font-weight: 500;
       line-height: 1.1;
       text-transform: uppercase;
-
+      position: relative;
+      * {
+        transition: all ease .3s;
+      }
+      &:before, &:after {
+        content:"";
+        display: block;
+        width: 0; 
+        height: 0; 
+        position: absolute;
+        bottom: 10px;
+        opacity: 0;
+        border-top: 0 solid $color-gold; 
+        transition: all ease .3s;
+      }
+      &:before {
+        border-right: 83px solid transparent; 
+        left: 0;
+      }
+      span {
+        display: inline-block;
+      }
+      &:after {
+        border-left: 83px solid transparent; 
+        right: 0;
+      }
+      &:hover {
+        &:before, &:after {
+          opacity: 1;
+          bottom: -25px;
+          border-top: 25px solid $color-gold; 
+        }
+        span {
+          transform: translateY(2px);
+        }
+      }
     }
   }
   .middle-text {
     text-align: center;
     font-family: $font_heading1;
-    font-size: 37px;
+    font-size: 40px;
     font-weight: normal;
     line-height: 1.1;
     position: relative;
@@ -714,9 +926,141 @@ section.home-cards {
 }
 
 #content {
+  @media screen and (max-width: $tabwidth) {
+    .reg-button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      a {
+        display: block;
+        text-decoration: none;
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding: 14px 10px 10px;
+        border-radius: 0;
+        background: $color-gold;
+        color: #FFF;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.1;
+        text-transform: uppercase;
+        position: relative;
+        &:hover {
+          background: $color-green;
+        }
+      }     
+    }
+  }
+  @media screen and (max-width: $xswidth) {
+    .reg-button a {
+      width: 100%;
+    }
+  }
+}
+
+#content {
   background: {
     image:url('images/floral.svg');
     position: center;
   }
 }
+
+.home-content {
+  padding: 80px 15px;
+  position:relative;
+}
+
+
+/* MOBILE < 768 */
+.mobile-navigation {display:none;}
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.85);
+  z-index: 300;
+  @include animateThis(0.5s);
+  &.active {
+    display: block;
+    @include animateEffect('fadeIn');
+  }
+}
+@media screen and (max-width: $tabwidth) {
+  .site {
+    margin-top: 60px;
+  }
+  #site-navigation {
+    display: none;
+  }
+  #primary-menu {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+  }
+  #primary-menu > li {
+    width: 100%;
+    text-align: left;
+  }
+  #primary-menu > li > a {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: normal;
+    color: $color-tan;
+    padding: 12px 25px;
+  }
+  #primary-menu > li:hover > a {
+    background: $color-gold;
+    color: #FFF;
+  }
+  #mobile-menu-toggle {
+    display: block;
+    cursor: pointer;
+    z-index: 505;
+  }
+  .mobile-navigation {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+    background-color: $color-green;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: all ease .3s;
+    z-index: -999;
+    .primary-menu-wrap {
+      width: 100%;
+      padding: 70px 0 50px;
+    }
+    &.active {
+      right: 0;
+      z-index: 500;
+    }
+  }
+  .banner-top-text .reg-button {
+    display: none;
+  }
+}
+/* end MOBILE < 768 */
+
+/* FOOTER */
+.footer-logo {
+  img {
+    width: auto;
+    height: 20px;
+    float: left;
+    opacity: 0.5;
+  }
+}
+
 

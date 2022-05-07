@@ -10,13 +10,16 @@
 	$other_info = get_field("other_info","option");
 	$social_media = get_field("social_links","option");
 	$social_icons = social_icons();
-	$footer_logos = get_field("footer_logos","option");
+	$footer_logo = get_field("footer_logo","option");
 	?>
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrapper	foot-flex">
-			<div class="footer-logo">
-				<img src="<?php bloginfo('template_url'); ?>/images/whitewater.png">
-			</div>
+      <?php if ( $footer_logo ) { ?>
+      <div class="footer-logo">
+        <img src="<?php echo $footer_logo['url'] ?>" alt="<?php echo $footer_logo['title'] ?>">
+      </div>
+      <?php } ?>
+			
 			<nav class="footer">
 				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu' ) ); ?>
 			</nav>

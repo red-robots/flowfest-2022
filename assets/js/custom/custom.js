@@ -5,6 +5,35 @@
  */
 
 jQuery(document).ready(function ($) {
+
+  /* Mobile Navigation */
+  adjustElements();
+  $(window).on('orientationchange resize',function(){
+    adjustElements();
+  });
+  function adjustElements() {
+    if( $(window).width() < 768 ) {
+      $('.desktop-navigation .primary-menu-wrap').appendTo('.mobile-navigation');
+      $('.banner-top-text .reg-button').prependTo('.home-content');
+    } else {
+      $('.mobile-navigation .primary-menu-wrap').appendTo('.desktop-navigation');
+      $('.home-content .reg-button').prependTo('.banner-top-text .wrapper');
+    }
+  }
+
+  $(document).on('click','#mobile-menu-toggle',function(){
+    $('body').toggleClass('mobile-menu-open');
+    $(this).toggleClass('active');
+    $('.mobile-navigation').toggleClass('active');
+    $('#overlay').toggleClass('active');
+  });
+
+  $(document).on('click','#overlay',function(){
+    $(this).removeClass('active');
+    $('body').removeClass('mobile-menu-open');
+    $('#mobile-menu-toggle').removeClass('active');
+    $('.mobile-navigation').removeClass('active');
+  });
 	
 	var swiper = new Swiper('#slideshow', {
 		effect: 'fade', /* "fade", "cube", "coverflow" or "flip" */

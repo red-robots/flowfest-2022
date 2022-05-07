@@ -37,7 +37,7 @@ if ( is_singular( get_post_type() ) && in_array(get_post_type(),$excludePostType
     <div class="wrapper">
       <?php if ( $register_button_text && $register_button_link ) { ?>
       <div class="reg-button">
-        <a href="<?php echo $register_button_link ?>" target="<?php echo $register_button_target ?>" class="register-btn"><?php echo $register_button_text ?></a>
+        <a href="<?php echo $register_button_link ?>" target="<?php echo $register_button_target ?>" class="register-btn"><span><?php echo $register_button_text ?></span></a>
       </div>
       <?php } ?>
       <div class="middle-text"><?php echo $top_text ?></div>
