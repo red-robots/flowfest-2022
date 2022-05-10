@@ -150,6 +150,8 @@ header.site-header {
     }
   }
 }
+body.home #site-logo {display:none;}
+
 nav.main-navigation {
 	width: auto;
 	text-align: center;
@@ -312,6 +314,7 @@ footer.site-footer {
 	float: left;
 	position: relative;
 	background-color: #000;
+  overflow: hidden;
 	&.video-playing {
 		z-index: 300;
 	}
@@ -747,6 +750,105 @@ section.home-cards {
 		}
 	}
 }
+
+.home-content {
+  position:relative;
+}
+
+section.homepage-cards {
+  .card-row {
+    @include flexgroup();
+  }
+  .card {
+    width: 100%;
+    @include tab {
+      width: 50%;
+    }
+    a.cardlink {
+      display: block;
+      width: 100%;
+      float: left;
+      color: #FFF;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      * {
+        transition: all ease-in-out .35s;
+      }
+    }
+    figure {
+      width: 100%;
+      float: left;
+      margin: 0 0;
+      transform: scale(1.2);
+      @include backgroundImage(center);
+      img {
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+    }
+  }
+  .card-info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    @include flexbox();
+    @include flexbox-justify(center);
+    @include flexbox-align-items(center);
+    h2 {
+      margin: 0 0;
+      font-family: $font_heading1;
+      font-size: 3.5rem;
+      font-weight: bold;
+      line-height: 1.1;
+      text-transform: uppercase;
+      position:relative;
+      top: 7px;
+    }
+  }
+
+  .card-row {
+    .card.odd {
+      .card-info {
+        background: rgba(168,155,70,90%);
+      }
+    }
+    .card.even {
+      .card-info {
+        background: rgba(221,106,63,85%);
+      }
+    }
+  }
+
+  .card-row.even {
+    @include tab {
+      .card.odd {
+        .card-info {
+          background:  rgba(221,106,63,85%);
+        }
+      }
+      .card.even {
+        .card-info {
+          background: rgba(168,155,70,90%);
+        }
+      }
+    }
+  }
+
+  .cardlink:hover {
+    figure {
+      background-position: 0 35px;
+    }
+    .card-info {
+      height: 20%;
+    }
+  }
+}
+
 section.home-cards-new {
   margin-left: -10px;
   margin-right: -10px;
@@ -967,11 +1069,6 @@ section.home-cards-new {
     image:url('images/floral.svg');
     position: center;
   }
-}
-
-.home-content {
-  padding: 80px 15px;
-  position:relative;
 }
 
 /* FOOTER */

@@ -25,26 +25,6 @@ if ( is_singular( get_post_type() ) && in_array(get_post_type(),$excludePostType
 }
 ?>
 
-<?php /* REGISTER */ ?>
-<?php if( is_front_page() || is_home() ) {
-  $register = get_field('register_button_link','option');
-  $register_button_text = (isset($register['title']) && $register['title']) ? $register['title'] : '';
-  $register_button_link = (isset($register['url']) && $register['url']) ? $register['url'] : '';
-  $register_button_target = (isset($register['target']) && $register['target']) ? $register['target'] : '_self';
-  $top_text = get_field('banner_top_text',$post_id);
-  if ( $top_text ) { ?>
-  <div class="banner-top-text">
-    <div class="wrapper">
-      <?php if ( $register_button_text && $register_button_link ) { ?>
-      <div class="reg-button">
-        <a href="<?php echo $register_button_link ?>" target="<?php echo $register_button_target ?>" class="register-btn"><span><?php echo $register_button_text ?></span></a>
-      </div>
-      <?php } ?>
-      <div class="middle-text"><?php echo $top_text ?></div>
-    </div>
-  </div>
-  <?php } ?>
-<?php } ?>
 
 <?php if($is_default_slide) { ?>
 	<?php 

@@ -28,6 +28,35 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'klarissa';
+  src: url('fonts/klarissa/klarissa-webfont.woff2') format('woff2'),
+       url('fonts/klarissa/klarissa-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'klarissa_contour';
+  src: url('fonts/klarissa/klarissacontour-webfont.woff2') format('woff2'),
+       url('fonts/klarissa/klarissacontour-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'klarissa_shadow';
+  src: url('fonts/klarissa/klarissashadow-webfont.woff2') format('woff2'),
+       url('fonts/klarissa/klarissashadow-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gazebo';
+  src: url('fonts/gazebo/gazebo-webfont.woff2') format('woff2'),
+       url('fonts/gazebo/gazebo-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 $color_link: royalblue;
 $color_link_visited: purple;
 $color_link_hover: midnightblue;
@@ -42,9 +71,12 @@ $color-brown: #b16b4f;
 
 
 $font1: 'Hind', sans-serif;
-$font2: 'Cinzel', serif;
+$font2: 'Miltonian Tattoo', serif;
 $font3: 'Aladin', cursive;
-$font_heading1: 'Eckmannpsych', 'Hind Siliguri', sans-serif;
+//$font_heading1: 'Gazebo', Futura, "Trebuchet MS", Arial, sans-serif;
+$font_heading1: 'Gazebo', 'Miltonian Tattoo', "Trebuchet MS", sans-serif;
+$font_heading2: 'klarissa', Futura, "Trebuchet MS", Arial, sans-serif;
+$font_heading3: 'Eckmannpsych', Futura, "Trebuchet MS", Arial, sans-serif;
 
 // $font1: 'Recoleta', serif;
 // $font2: 'DM Sans', sans-serif;
