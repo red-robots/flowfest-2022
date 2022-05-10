@@ -1294,11 +1294,11 @@ nav.main-navigation ul.menu>li:hover>a{color:#fff;background-color:#b4a859}
 nav.main-navigation ul.menu>li:hover>a:before,nav.main-navigation ul.menu>li:hover>a:after{width:100%;left:0;opacity:1}
 nav.main-navigation ul.menu>li:hover>a:before{top:3px;-webkit-transform:scaleX(1) translateX(0) rotate(0);transform:scaleX(1) translateX(0) rotate(0)}
 nav.main-navigation ul.menu>li:hover>a:after{bottom:3px;-webkit-transform:scaleX(1) translateX(0) rotate(180deg);transform:scaleX(1) translateX(0) rotate(180deg)}
-nav.main-navigation ul.menu>li ul{display:block;position:absolute;width:180px;opacity:0;background:rgba(179,167,89,.75);margin:0;padding:0;text-align:center;-webkit-transform:translate(-10px,-11px) scale(0.85);transform:translate(-10px,-11px) scale(0.85);-webkit-transition:all ease-in-out .3s;transition:all ease-in-out .3s}
+nav.main-navigation ul.menu>li ul{display:block;position:absolute;width:180px;opacity:0;background:rgba(179,167,89,.75);margin:-10px 0 0;padding:0;text-align:center;-webkit-transform:translate(-10px,-11px) scale(0.85);transform:translate(-10px,-11px) scale(0.85);-webkit-transition:all ease-in-out .3s;transition:all ease-in-out .3s}
 nav.main-navigation ul.menu>li ul li{display:block;width:100%;text-align:left}
 nav.main-navigation ul.menu ul a{display:block;text-decoration:none;color:#e7d8cc;font-size:15px;line-height:1.2;padding:10px 15px}
 nav.main-navigation ul.menu ul>li:hover>a{color:#fff;-webkit-transform:translateX(5px);transform:translateX(5px)}
-nav.main-navigation ul.menu>li:hover>ul{-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1);height:auto;opacity:1;padding:10px 0}
+nav.main-navigation ul.menu>li:hover>ul{margin-top:0;-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1);height:auto;opacity:1;padding:10px 0}
 footer.site-footer{background-color:#035455}
 footer.site-footer nav.footer ul{margin:0;padding:0}
 footer.site-footer nav.footer li{margin:0;padding:0;display:inline-block;line-height:3}
