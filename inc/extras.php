@@ -225,4 +225,26 @@ function parse_external_url( $url = '', $internal_class = 'internal-link', $exte
 }
 
 
+add_action( 'wp_ajax_nopriv_get_post_info', 'get_post_info' );
+add_action( 'wp_ajax_get_post_info', 'get_post_info' );
+function get_post_info() {
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    $post_id = ($_POST['postid']) ? $_POST['postid'] : 0;
+    $post = get_post($post_id);
+    $html = '';
+    if($post) {
+      ob_start();
+      include(locate_template('parts/popup_content.php'));
+      $html = ob_get_contents();
+      ob_end_clean();
+    }
+    $response['content'] = $html;
+    echo json_encode($response);
+  }
+  else {
+    header("Location: ".$_SERVER["HTTP_REFERER"]);
+  }
+  die();
+}
+
 

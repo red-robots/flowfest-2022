@@ -26,7 +26,6 @@ jQuery(document).ready(function ($) {
     $('body').toggleClass('mobile-menu-open');
     $(this).toggleClass('active');
     $('.mobile-navigation').toggleClass('active');
-    $('#overlay').toggleClass('active');
   });
   $(document).on('click', '#overlay', function () {
     $(this).removeClass('active');
@@ -90,5 +89,39 @@ jQuery(document).ready(function ($) {
   $(document).on("click", "#toggleMenu", function () {
     $(this).toggleClass('open');
     $('body').toggleClass('open-mobile-menu');
+  });
+  /* POP-UP POST TYPE INFO */
+
+  $('#popup-info .postinfo').on("click", function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    $.ajax({
+      url: frontajax.ajaxurl,
+      type: 'post',
+      dataType: "json",
+      data: {
+        action: 'get_post_info',
+        postid: id
+      },
+      beforeSend: function beforeSend() {
+        $('#loader').show();
+      },
+      success: function success(response) {
+        if (response.content) {
+          $('#popup-content').html(response.content);
+          $('#popup-content').addClass('show');
+          $('#overlay').addClass('show');
+          $('body').addClass('popup-open');
+        }
+      },
+      complete: function complete() {
+        $('#loader').hide();
+        $(document).on('click', '#overlay', function () {
+          $('#popup-content').removeClass('show');
+          $('body').removeClass('popup-open');
+          $('#overlay').removeClass('show');
+        });
+      }
+    });
   });
 }); // END #####################################    END

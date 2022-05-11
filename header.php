@@ -7,7 +7,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aladin&family=Cinzel:wght@400;500;600;700;800;900&family=Hind:wght@300;400;500;600;700&family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script defer src="<?php bloginfo( 'template_url' ); ?>/assets/svg-with-js/js/fontawesome-all.js"></script>
 
 
@@ -17,8 +17,11 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site cf">
 	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
+  
   <div id="overlay"></div>
-	<header id="masthead" class="site-header floral-pattern" role="banner">
+  <div id="popup-content"></div>
+	
+  <header id="masthead" class="site-header floral-pattern" role="banner">
 		<div class="wrapper head-flex">
 			
         <div id="site-logo" class="logo">
@@ -38,7 +41,7 @@
 	</header><!-- #masthead -->
 
   <span id="mobile-menu-toggle"><span class="bar"><span></span></span></span>
-  <div class="mobile-navigation"></div>
+  <div class="mobile-navigation floral-pattern"></div>
 
 	<?php if( !is_front_page()) { get_template_part('parts/pagetitle'); } ?>
 	<?php get_template_part('parts/banner'); ?>

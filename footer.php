@@ -29,7 +29,7 @@
 	
 </div><!-- #page -->
 
+<div id="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
 <?php wp_footer(); ?>
-
 </body>
 </html>

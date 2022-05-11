@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Workshops
+ * Template Name: Practices
  *
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
@@ -24,7 +24,7 @@ get_header(); ?>
 				$date_now = date('Y-m-d H:i:s');
 				$wp_query = new WP_Query();
 				$wp_query->query(array(
-					'post_type'=>'workshops',
+					'post_type'=>'practices',
 					'posts_per_page' => -1,
 					'order'          => 'ASC',
 				    'orderby'        => 'meta_value',
