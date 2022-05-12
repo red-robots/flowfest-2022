@@ -126,30 +126,6 @@ function get_instagram_setup() {
     return $option;
 }
 
-function extract_emails_from($string){
-  preg_match_all("/[\._a-zA-Z0-9-]+@[\._a-zA-Z0-9-]+/i", $string, $matches);
-  return $matches[0];
-}
-
-function email_obfuscator($string) {
-    $output = '';
-    if($string) {
-        $emails_matched = ($string) ? extract_emails_from($string) : '';
-        if($emails_matched) {
-            foreach($emails_matched as $em) {
-                $encrypted = antispambot($em,1);
-                $replace = 'mailto:'.$em;
-                $new_mailto = 'mailto:'.$encrypted;
-                $string = str_replace($replace, $new_mailto, $string);
-                $rep2 = $em.'</a>';
-                $new2 = antispambot($em).'</a>';
-                $string = str_replace($rep2, $new2, $string);
-            }
-        }
-        $output = apply_filters('the_content',$string);
-    }
-    return $output;
-}
 
 function get_social_links() {
     $social_types = social_icons();

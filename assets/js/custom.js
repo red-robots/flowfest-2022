@@ -90,6 +90,26 @@ jQuery(document).ready(function ($) {
     $(this).toggleClass('open');
     $('body').toggleClass('open-mobile-menu');
   });
+  /* Move Submenu Dropdown  to #dropdown-container */
+  // $('#primary-menu > li.menu-item-has-children ul.sub-menu').each(function(){
+  //   var menuId = $(this).parents('li').attr('id');
+  //   var submenuId = 'children-'+menuId;
+  //   if( $('#dropdown-container #'+submenuId ).length==0 ) {
+  //     $(this).attr('id',submenuId).appendTo('#dropdown-container');
+  //   }
+  // });
+
+  if ($(window).width() < 768) {
+    /* Remove parent link on Mobile View for menu with dropdown */
+    $('#primary-menu > li.menu-item-has-children > a').each(function () {
+      $(this).attr('href', 'javascript:void(0)').addClass('mobile-parent-link');
+    });
+  }
+
+  $(document).on("click", "a.mobile-parent-link", function (e) {
+    e.preventDefault();
+    $(this).next().slideToggle();
+  });
   /* POP-UP POST TYPE INFO */
 
   $('#popup-info .postinfo').on("click", function (e) {

@@ -16,12 +16,20 @@ function js_custom_init() {
             'menu_icon' => 'dashicons-format-quote',
             'supports'  => array('title','editor')
         ),
+        // array(
+        //     'post_type' => 'artists',
+        //     'menu_name' => 'Music Artists',
+        //     'plural'    => 'Artists',
+        //     'single'    => 'Artist',
+        //     'menu_icon' => 'dashicons-groups',
+        //     'supports'  => array('title','editor')
+        // ),
         array(
-            'post_type' => 'artists',
-            'menu_name' => 'Music Artists',
-            'plural'    => 'Artists',
-            'single'    => 'Artist',
-            'menu_icon' => 'dashicons-groups',
+            'post_type' => 'festival',
+            'menu_name' => 'Festival Activities',
+            'plural'    => 'Festival Activities',
+            'single'    => 'Festival Activity',
+            'menu_icon' => 'dashicons-tickets-alt',
             'supports'  => array('title','editor')
         ),
         array(

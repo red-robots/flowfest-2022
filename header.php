@@ -33,7 +33,7 @@
           </a>
           <?php } ?>
         </div>
-  			<nav id="site-navigation" class="main-navigation desktop-navigation" role="navigation">
+  			<nav id="site-navigation" class="main-navigation desktop-navigation full-width-dropdown" role="navigation">
   				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_class'=>'primary-menu-wrap' ) ); ?>
   			</nav><!-- #site-navigation -->
 			<div class="right-head">&nbsp;</div>
