@@ -223,7 +223,8 @@ nav.main-navigation {
     height: 0;
     overflow: hidden;
     opacity: 0;
-    background: rgba($color-gold,90%);
+    // background: rgba($color-gold,90%);
+    background: $color-gold;
     margin: -2px 0 0;
     padding: 0 0;
     text-align: center;
