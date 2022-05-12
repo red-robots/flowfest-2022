@@ -33,6 +33,43 @@ jQuery(document).ready(function ($) {
     $('#mobile-menu-toggle').removeClass('active');
     $('.mobile-navigation').removeClass('active');
   });
+
+  /* Move Submenu Dropdown  to #dropdown-container */
+  // $('#primary-menu > li.menu-item-has-children ul.sub-menu').each(function(){
+  //   var menuId = $(this).parents('li').attr('id');
+  //   var submenuId = 'children-'+menuId;
+  //   if( $('#dropdown-container #'+submenuId ).length==0 ) {
+  //     $(this).attr('id',submenuId).appendTo('#dropdown-container');
+  //   }
+  // });
+
+  $('#primary-menu > li.menu-item-has-children > a').each(function(){
+    var parentLink = $(this).attr('href');
+    $(this).attr('data-href',parentLink);
+  });
+
+  changeParentLinkMobile();
+  $(window).on('orientationchange resize',function(){
+    changeParentLinkMobile();
+  });
+  function changeParentLinkMobile() {
+    if( $(window).width() < 768 ) {
+      /* Remove parent link on Mobile View for menu with dropdown */
+      $('#primary-menu > li.menu-item-has-children > a').each(function(){
+        $(this).attr('href','javascript:void(0)').addClass('mobile-parent-link');
+      });
+    } else {
+      $('#primary-menu > li.menu-item-has-children > a').each(function(){
+        var parentLink = $(this).attr('data-href');
+        $(this).attr('href',parentLink).removeClass('mobile-parent-link');
+      });
+    }
+  }
+
+  $(document).on("click","a.mobile-parent-link",function(e){
+    e.preventDefault();
+    $(this).next().slideToggle();
+  });
 	
 	var swiper = new Swiper('#slideshow', {
 		effect: 'fade', /* "fade", "cube", "coverflow" or "flip" */
@@ -94,27 +131,6 @@ jQuery(document).ready(function ($) {
 		$(this).toggleClass('open');
 		$('body').toggleClass('open-mobile-menu');
 	});
-
-  /* Move Submenu Dropdown  to #dropdown-container */
-  // $('#primary-menu > li.menu-item-has-children ul.sub-menu').each(function(){
-  //   var menuId = $(this).parents('li').attr('id');
-  //   var submenuId = 'children-'+menuId;
-  //   if( $('#dropdown-container #'+submenuId ).length==0 ) {
-  //     $(this).attr('id',submenuId).appendTo('#dropdown-container');
-  //   }
-  // });
-
-  if( $(window).width() < 768 ) {
-    /* Remove parent link on Mobile View for menu with dropdown */
-    $('#primary-menu > li.menu-item-has-children > a').each(function(){
-      $(this).attr('href','javascript:void(0)').addClass('mobile-parent-link');
-    });
-  }
-
-  $(document).on("click","a.mobile-parent-link",function(e){
-    e.preventDefault();
-    $(this).next().slideToggle();
-  });
 
 
   /* POP-UP POST TYPE INFO */
