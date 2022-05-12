@@ -1522,6 +1522,8 @@ header.site-header{z-index:100}
 header.site-header .wrapper{width:100%;height:100%}
 header.site-header #site-logo{left:20px}
 body.home header.site-header{width:120px;height:120px;border-radius:100%;position:fixed;top:-50px;right:-35px}
+body.subpage{padding-top:60px}
+body.subpage header.site-header{position:fixed;top:0}
 body.mobile-menu-open{overflow:hidden}
 #site-navigation{display:none}
 #primary-menu{margin:-10vh 0 0;padding:0;list-style:none}
@@ -1540,7 +1542,7 @@ body.mobile-menu-open{overflow:hidden}
 .mobile-navigation ul.menu>li.current_page_ancestor>ul{display:block !important}
 .mobile-navigation ul.menu>li>a:focus,.mobile-navigation ul.menu>li.current_page_item>a,.mobile-navigation ul.menu>li.current_page_ancestor>a{background:#b3a759;color:#fff !important}
 .banner-top-text .reg-button{display:none}
-html body.logged-in.admin-bar.subpage header.site-header{top:0}
+html body.logged-in.admin-bar.subpage header.site-header{top:46px}
 html body.logged-in.admin-bar #wpadminbar{position:fixed}
 html body.logged-in.admin-bar .mobile-navigation .primary-menu-wrap{padding-top:105px}
 html body.logged-in.admin-bar header.site-header{top:-10px}

@@ -1581,7 +1581,13 @@ body.popup-open {
       right: -35px;
     }
   }
-  
+  body.subpage {
+    padding-top: 60px;
+    header.site-header {
+      position: fixed;
+      top: 0;
+    }
+  }
   body.mobile-menu-open {
     overflow: hidden;
   }
@@ -1683,7 +1689,7 @@ body.popup-open {
   }
   html body.logged-in.admin-bar {
     &.subpage {
-      header.site-header{top:0;}
+      header.site-header{top:46px;}
     }
     #wpadminbar {position: fixed;}
     .mobile-navigation .primary-menu-wrap {padding-top:105px;}
