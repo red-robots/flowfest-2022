@@ -122,6 +122,7 @@ jQuery(document).ready(function ($) {
   ------------------------------------*/
 
   new WOW().init();
+  $('.matchHeight').matchHeight();
   $(document).on("click", "#toggleMenu", function () {
     $(this).toggleClass('open');
     $('body').toggleClass('open-mobile-menu');

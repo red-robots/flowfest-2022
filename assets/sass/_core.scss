@@ -1353,6 +1353,9 @@ body.popup-open {
 }
 
 .repeatable-content-blocks {
+  margin: 20px 0;
+  width: 100%;
+  float: left;
   .content-block {
     margin: 50px 0;
   }
@@ -1365,6 +1368,14 @@ body.popup-open {
     padding: 20px;
     @include tab {
       height: 100%;
+      &.matchHeight {
+        @include flexgroup();
+        @include flexbox-justify(center);
+        @include flexbox-align-items(center);
+        .inside {
+          width: 100%;
+        }
+      }
     }
     a {
       color: #e4d25c;

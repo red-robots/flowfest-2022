@@ -27,10 +27,11 @@ get_header(); ?>
               $image = get_sub_field('image');
               $column_class = ( ($title || $text) &&  $image ) ? 'half':'full';
               $column_class .= ($n % 2 == 0 ) ? ' even':' odd';
+              $hasMatchHeight = ( ($title || $text) &&  $image ) ? ' matchHeight':'';
               if( ($title || $text) ||  $image ) { ?>
               <div class="content-block <?php echo $column_class ?>">
                 <?php if ( $title || $text ) { ?>
-                <div class="textcol block">
+                <div class="textcol block<?php echo $hasMatchHeight ?>">
                   <div class="inside">
                     <?php if ($title) { ?>
                      <h2 class="rb_title"><?php echo $title ?></h2> 
@@ -58,7 +59,7 @@ get_header(); ?>
                 <?php } ?>
 
                 <?php if ( $image ) { ?>
-                <div class="imagecol block">
+                <div class="imagecol block<?php echo $hasMatchHeight ?>">
                   <figure style="background-image:url('<?php echo $image['url'] ?>')">
                     <img src="<?php echo THEMEURI ?>images/rectangle.png" alt="">
                   </figure>
