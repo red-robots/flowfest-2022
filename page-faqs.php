@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: FAQ's
+ * Template Name: FAQs
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,38 +9,36 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+  <div id="primary" class="content-area-full">
+    <main id="main" class="site-main" role="main">
 
-			<?php
-			while ( have_posts() ) : the_post();
+			<?php while ( have_posts() ) : the_post(); ?>
+        <?php if ( get_the_content() ) {  ?>
+          <div class="wrapper"><?php get_template_part( 'parts/content', 'page' ); ?></div>
+        <?php } ?>
+      <?php endwhile; ?>
 
-				get_template_part( 'parts/content', 'page' );
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-
-			endwhile; // End of the loop.
-			?>
-
-			<section class="faqs">
-				<?php if(have_rows('loan_faqs')): ?>
-					<?php while(have_rows('loan_faqs')): the_row();
-						$question=get_sub_field('question');
-						$answer=get_sub_field('answer');
-					?>
-							<div class="faqrow">
-								<div class="question">
-									<div class="plus-minus-toggle collapsed"></div>
-									<?php the_sub_field('question'); ?>
-								</div>
-								<div class="answer"><?php the_sub_field('answer'); ?></div>
-							</div><!-- faqrow -->
-					<?php endwhile; ?>
-				<?php endif; ?>
-			</section>
+	
+			<?php if(have_rows('faqs')): ?>
+      <section class="faqs">
+        <div class="wrapper">
+				<?php while(have_rows('faqs')): the_row();
+					$question=get_sub_field('question');
+					$answer=get_sub_field('answer'); 
+          if($question && $answer) { ?>
+  				<div class="faqrow">
+  					<a href="javascript:void(0)" class="question">
+  						<span class="plus-minus-toggle"></span>
+  						<?php echo $question; ?>
+  					</a>
+  					<div class="answer"><?php echo $answer; ?></div>
+  				</div>
+          <?php } ?>
+				<?php endwhile; ?>
+        </div>
+      </section>
+			<?php endif; ?>
+			
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

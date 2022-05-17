@@ -13,8 +13,10 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-        <?php if ( get_the_content() ) { get_template_part( 'parts/content', 'page' ); } ?>
-			<?php endwhile; // End of the loop. ?>
+        <?php if ( get_the_content() ) {  ?>
+          <div class="wrapper"><?php get_template_part( 'parts/content', 'page' ); ?></div>
+        <?php } ?>
+			<?php endwhile; ?>
 
       <?php  if( have_rows('gallery') ) { ?>
       <section class="galleries">

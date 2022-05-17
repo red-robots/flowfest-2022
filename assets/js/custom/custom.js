@@ -169,4 +169,11 @@ jQuery(document).ready(function ($) {
   });
 
 
+  /* FAQS */
+  $(document).on('click','.faqrow .question',function(){
+    $(this).parent().toggleClass('active');
+    $(this).next().slideToggle();
+  });
+
+
 });// END #####################################    END
