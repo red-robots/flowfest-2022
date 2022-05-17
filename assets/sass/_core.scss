@@ -1504,9 +1504,17 @@ body.page-template-page-repeatable-blocks {
   }
 }
 
+.content-default-template #main {
+  min-height: 20em;
+  padding: 10px 0;
+  .hentry {
+    padding-bottom: 10px;
+  }
+}
+
 /* GALLERIES */
 .galleries {
-  padding: 50px 0;
+  padding: 30px 0;
   .flexwrap {
     @include flexgroup();
   }
@@ -1607,8 +1615,8 @@ body.page-template-page-repeatable-blocks {
 section.faqs {
   .wrapper {
     max-width: 900px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   .faqrow {
     margin: 30px 0;
