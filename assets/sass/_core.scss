@@ -1504,6 +1504,94 @@ body.page-template-page-repeatable-blocks {
   }
 }
 
+/* GALLERIES */
+.galleries {
+  padding: 50px 0;
+  .flexwrap {
+    @include flexgroup();
+  }
+  figure {
+    display: block;
+    margin: 0 0;
+    width: 33.333%;
+    padding: 15px;
+    a {
+      position: relative;
+      overflow: hidden;
+    }
+    a, img {
+      display: block;
+      width: 100%;
+      height: auto;
+      float: left;
+      cursor: pointer;
+      * {
+        transition: all ease .4s;
+      }
+    }
+    span.image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 15;
+      @include backgroundImage(center);
+    }
+    &.type_video {
+      span.image {
+        &:before {
+          content:"";
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(0,0,0,.35);
+        }
+        .arrow {
+          display: inline-block;
+          width: 5vw;
+          height: 5vw;
+          background: rgba(0,0,0,.25);
+          border-radius: 100%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          border: 3px solid #FFF;
+          opacity: 0.85;
+          &:before {
+            content:"";
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border-left: 35px solid #FFF;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    a:hover {
+      span.image {
+        transform: scale(1.07);
+        .arrow {
+          background: rgba(0,0,0,.5);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
 #loader {
   display: none;
   width: 100%;
