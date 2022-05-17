@@ -48,6 +48,10 @@ get_header(); ?>
                 $hash = unserialize(file_get_contents("https://vimeo.com/api/v2/video/$vimeoId.php"));
                 $video_thumbnail = ( isset($hash[0]['thumbnail_large']) && $hash[0]['thumbnail_large'] ) ? $hash[0]['thumbnail_large'] : '';
               } 
+
+              if($image) {
+                $video_thumbnail = $image['url'];
+              }
             }
             if($type=='image' && $image ) { ?>
             <figure class="type_image">
