@@ -39,6 +39,14 @@ function js_custom_init() {
             'single'    => 'Practice',
             'menu_icon' => 'dashicons-location',
             'supports'  => array('title','editor')
+        ),
+        array(
+            'post_type' => 'schedule',
+            'menu_name' => 'Schedules',
+            'plural'    => 'Schedules',
+            'single'    => 'Schedule',
+            'menu_icon' => 'dashicons-calendar-alt',
+            'supports'  => array('title')
         )
     );
     
@@ -158,6 +166,12 @@ function set_custom_cpt_columns($columns) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
+    if($post_type=='schedule') {
+        unset( $columns['title'] );
+        unset( $columns['date'] );
+        $columns['title'] = __( 'Event Date', 'bellaworks' );
+        $columns['date'] = __( 'Post Date', 'bellaworks' );
+    }
     
     if($post_type=='teams') {
         unset( $columns['taxonomy-team-groups'] );

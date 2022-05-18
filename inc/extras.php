@@ -223,4 +223,92 @@ function get_post_info() {
   die();
 }
 
+/* Disable Gutenberg by post_type */
+function ea_disable_gutenberg( $can_edit, $post_type ) {
+
+  if( ! ( is_admin() && (!empty($_GET['post']) || !empty($_GET['post_type'])) ) )
+    return $can_edit;
+
+  
+
+  $exclude_post_types = ['schedule'];
+  $current_post_type = get_post_type($_GET['post']);
+
+  if( in_array($current_post_type,$exclude_post_types) )
+    $can_edit = false;
+
+  if( in_array($_GET['post_type'],$exclude_post_types) )
+    $can_edit = false;
+
+  return $can_edit;
+
+}
+add_filter( 'gutenberg_can_edit_post_type', 'ea_disable_gutenberg', 10, 2 );
+add_filter( 'use_block_editor_for_post_type', 'ea_disable_gutenberg', 10, 2 );
+
+
+function flowfest_admin_footer_script() { ?>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+  $('[data-name="event_date"] .acf-input-wrap input.input').on('keyup blur focusout change',function(){
+    var selectedDate = this.value.trim();
+    $('#titlewrap input[name="post_title"]').val(selectedDate);
+  });
+  $('body.post-type-schedule #titlewrap').append('<div class="disable-input"></div>');
+});
+</script>
+<?php
+}
+add_action( 'admin_footer', 'flowfest_admin_footer_script' );
+
+function flowfest_admin_header_script() { ?>
+<style type="text/css">
+  body.post-type-schedule #edit-slug-box {display:none!important;}
+  /*body.post-type-schedule input[name="post_title"] {opacity:0.5;}*/
+  body.post-type-schedule #titlewrap {position:relative;cursor:not-allowed;visibility:hidden;z-index:-999;height:0;overflow:hidden;}
+  body.post-type-schedule #titlewrap .disable-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(#F0F0F1,.35);
+  }
+  .wp-block-button__link {background-color: #b16b4f;}
+</style>
+<?php
+}
+add_action( 'admin_head', 'flowfest_admin_header_script' );
+
+
+add_action('acf/save_post', 'flowfest_acf_save_post', 5);
+function flowfest_acf_save_post( $post_id ) {
+  if( get_post_type($post_id)=='schedule' ) {
+    // Check if a specific value was updated.
+    if( isset($_POST['acf']['field_62846d814a1dc']) ) {
+      $new_date = $_POST['acf']['field_62846d814a1dc'];
+      $event_date = date('m-d-Y',strtotime($new_date));
+      $new_info = array(
+        'post_name' => $event_date,
+        'ID' => $post_id
+      );
+      wp_update_post($new_info);
+    }
+  }
+}
+
+/* Query latest scheduled activities */
+function get_scheduled_activity() {
+  global $wpdb;
+  $today = date('Ymd');
+  $query = "SELECT p.ID, p.post_title FROM ".$wpdb->prefix."postmeta m, ".$wpdb->prefix."posts p WHERE p.ID=m.post_id AND CAST(m.meta_value AS date) >= NOW() AND m.meta_key='event_date' AND p.post_status='publish' AND p.post_type='schedule' LIMIT 1";
+  $result = $wpdb->get_results($query);
+  return ($result) ? $result[0] : '';
+}
+
+
+
+
+
 

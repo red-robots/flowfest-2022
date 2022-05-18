@@ -1709,6 +1709,73 @@ section.faqs {
     }
   }
 }
+.wp-block-buttons>.wp-block-button {margin-top:20px;}
+.wp-block-button__link {
+  background-color: $color-brown;
+  color: #FFF;
+  &:hover {
+    background-color: $color-gold;
+  }
+}
+
+/* SCHEDULE */
+.schedule-activities {
+  .wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .schedule-title {
+    text-align: center;
+    margin-bottom: 40px;
+    h3 {
+      font-family: $font2;
+      font-size: 20px;
+      line-height: 1.2;
+      margin: 0 0;
+    }
+    .dayName {
+      margin: 5px 0 0;
+      font-size: 15px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+  }
+  .activities {
+    max-width: 700px;
+    width: 100%;
+    margin:0 auto;
+    .item {
+      font-size: 16px;
+      margin: 15px 0;
+      @include flexgroup();
+      @include flexbox-justify(space-between);
+      position: relative;
+      .border-bottom {
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        @include custom_dashed();
+      }
+
+      span.name {
+        color: #000;
+      }
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: $color-brown;
+        &:hover {
+          color: $color-gold;
+        }
+      }
+    }
+  }
+}
 
 #loader {
   display: none;
