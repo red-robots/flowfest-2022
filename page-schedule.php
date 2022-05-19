@@ -20,24 +20,35 @@ get_header(); ?>
 
 	
 			<?php 
-      $info = get_scheduled_activity();
-      if($info) { 
-        $e_date = get_field('event_date',$info->ID);
-        $eventDate = ($e_date) ? date(l,strtotime($e_date)) : '';
-        ?>
+      $evDate = get_field('event_date',get_the_ID());
+      $eventDay = ($evDate) ? date(l,strtotime($evDate)) : '';
+      $activities = get_field('activities',get_the_ID());
+      // $postTypes['festival'] = 'Festival Activities';
+      // $postTypes['practices'] = 'Practices';
+      // $postTypes['workshops'] = 'Workshops';
+      // $postTypes['other'] = 'Other';
+      // $postTypes = scheduled_activities_filter();
+      $postTypeList = array();
+      if($activities) {  ?>
       <section class="schedule-activities">
         <div class="wrapper">
+          <?php if ($evDate) { ?>
           <div class="schedule-title">
-            <h3><?php echo $info->post_title ?></h3>
-            <p class="dayName"><?php echo $eventDate ?></p>
+            <h3><?php echo date('F j, Y',strtotime($evDate)) ?></h3>
+            <p class="dayName"><?php echo $eventDay ?></p>
+          </div>
+          <?php } ?>
+
+          <div class="filter-option">
+            <label>Filter By</label> 
+            <div class="select-wrap">
+              <select name="filterby" id="filterby" class="js-select2" multiple>
+                <!-- <option value="all">All</option> -->
+              </select>
+              <span id="select2-selected-options">All</span>
+            </div>
           </div>
 
-          <?php if( $activities = get_field('activities',$info->ID) ) { 
-            $postTypes['festival'] = 'Festival Activities';
-            $postTypes['practices'] = 'Practices';
-            $postTypes['workshops'] = 'Workshops';
-            $postTypes['other'] = 'Other';
-          ?>
           <div class="activities">
             <?php foreach ($activities as $a) { 
               $time = (isset($a['time']) && $a['time']) ? $a['time'] : '';
@@ -46,42 +57,43 @@ get_header(); ?>
               $postid = (isset($item->ID) && $item->ID) ? $item->ID : '';
               $show_popup = (isset($a['popup_info'][0]) && $a['popup_info'][0]=='Yes') ? true:false;
               $cpt = ($postid) ? get_post_type($postid) : 'other';
-              //$postTypeName = (isset($postTypes[$cpt]) && $postTypes[$cpt]) ? $postTypes[$cpt] : 'Other';
-              $postTypeName = array_search($cpt, $postTypes);
+              //$postTypeName = ( scheduled_activities_filter($cpt) ) ? scheduled_activities_filter($cpt) : 'Other';
+              $item_title = (isset($item->post_title) && $item->post_title) ? $item->post_title : '';
+              if($custom_title) {
+                $item_title = $custom_title;
+              }
+              if($cpt=='page') {
+                $cpt='other';
+              }
+
+              if($postid) {
+                $post_type_obj = get_post_type_object( get_post_type($postid) );
+                $postTypeLabel = $post_type_obj->label;
+                if($postTypeLabel=='Pages') {
+                  $postTypeLabel = 'Other';
+                }
+                $postTypeList[$cpt] = $postTypeLabel;
+              }
             ?>
-            <div class="item" data-postid="<?php echo $postid ?>" data-posttype="<?php echo $cpt ?>">
+            <div class="item" data-postid="<?php echo $postid ?>" data-posttypename="<?php echo $postTypeLabel ?>" data-posttypeslug="<?php echo $cpt ?>">
               <?php if ($time) { ?>
               <span class="time"><?php echo $time ?></span>
               <?php } else { ?>
               <span class="time-NA"></span>
               <?php } ?>
 
-              <?php if ($custom_title) { ?>
-                
-                <?php if ( $item ) { ?>
-                  <?php if ($show_popup) { ?>
-                    <span class="name"><a class="popupinfo" href="javascript:void(0)" data-id="<?php echo $postid ?>"><?php echo $custom_title ?></a></span>
-                  <?php } else { ?>
-                    <span class="name"><?php echo $custom_title ?></span>
-                  <?php } ?>
+              <?php if ( $item ) { ?>
+                <?php if ($show_popup) { ?>
+                  <span class="name"><a class="popup-activity" href="javascript:void(0)" data-id="<?php echo $postid ?>"><?php echo $item_title ?></a></span>
+                <?php } else { ?>
+                  <span class="name"><?php echo $item_title ?></span>
                 <?php } ?>
-
-              <?php } else { ?>
-
-                <?php if ( $item ) { ?>
-                  <?php if ($show_popup) { ?>
-                    <span class="name"><a class="popupinfo" href="javascript:void(0)" data-id="<?php echo $postid ?>"><?php echo $item->post_title ?></a></span>
-                  <?php } else { ?>
-                    <span class="name"><?php echo $custom_title ?></span>
-                  <?php } ?>
-                <?php } ?>
-
               <?php } ?>
+
               <div class="border-bottom"></div>
             </div>
             <?php } ?>
           </div>
-          <?php } ?>
         </div>
       </section>
 			<?php } ?>
@@ -109,7 +121,103 @@ get_header(); ?>
           });
         });
       }
+
+      var postTypeList = <?php echo ( $postTypeList ) ? @json_encode($postTypeList):'[]' ?>;
+      var filter_options = [];
+      if( $('[data-posttypename]').length ) {
+        var postTypes = [];
+        $('[data-posttypename]').each(function(){
+          var name = $(this).attr('data-posttypename');
+          var slug = $(this).attr('data-posttypeslug');
+          var arg = {'name':name,'slug':slug};
+          postTypes.push(slug);
+        });
+
+        filter_options = unique(postTypes).sort();
+        $( filter_options ).each(function(k,slug){
+          if(typeof postTypeList[slug]!=='undefined' && postTypeList[slug]!==null) {
+            var select_option  = '<option value="'+slug+'">'+postTypeList[slug]+'</option>';
+            $('#filterby').append(select_option);
+          }
+        });
+      }
+
+      function unique(list) {
+        var result = [];
+        $.each(list, function(i, e) {
+          if ($.inArray(e, result) == -1) result.push(e);
+        });
+        return result;
+      }
       
+
+      /* Filter */
+      $(".js-select2").select2({
+        closeOnSelect : false,
+        placeholder : "",
+        allowClear: true
+      });
+
+      //var totalOptions = parseInt(filter_options.length) + 1;
+      var totalOptions = filter_options.length;
+
+
+      // $('.js-select2').on("select2:select", function(e) { 
+      //   var count = $('ul.select2-selection__rendered li.select2-selection__choice').length;
+      //   var selectedVal = 'Selected '+count+' of '+totalOptions;
+      //   $('#select2-selected-options').text(selectedVal);
+      //   if(jQuery.inArray("all", $('select#filterby').val()) !== -1) {
+      //     $('select#filterby').select2('destroy').find('option').prop('selected', 'selected').end().select2({
+      //       closeOnSelect : false,
+      //       placeholder : "",
+      //       allowClear: true
+      //     });
+      //     $('.filter-option .select2-container').append('<span id="select2-selected-options">Selected 0 of '+totalOptions+'</span>');
+      //     var selectedAll = 'Selected '+totalOptions+' of '+totalOptions;
+      //     $('#select2-selected-options').text(selectedAll);
+      //   }
+      // });
+
+      $('#filterby').on('change',function(){
+        var opt = this.value;
+        //var count = $('ul.select2-selection__rendered li.select2-selection__choice').length;
+        var selectedFilters = $('select#filterby').val();
+        var count = selectedFilters.length;
+
+        if(count==totalOptions) {
+          $('[data-posttypeslug]').each(function(){
+            $(this).show();
+          });
+          $('select#filterby').select2('destroy').find('option').prop('selected', 'selected').end().select2({
+            closeOnSelect : false,
+            placeholder : "",
+            allowClear: true
+          });
+          $('#select2-selected-options').text('All');
+        } else {
+
+          if(count==0) {
+            $('#select2-selected-options').text('All');
+            $('[data-posttypeslug]').each(function(){
+              $(this).show();
+            });
+          } else {
+            var selectedVal = 'Selected '+count+' of '+totalOptions;
+            $('#select2-selected-options').text(selectedVal);
+
+            $('[data-posttypeslug]').each(function(){
+              $(this).hide();
+            });
+            $(selectedFilters).each(function(k,v){
+              $('[data-posttypeslug="'+v+'"]').show();
+            });
+          }
+
+        }
+
+      });
+
+
     });
   </script>
 <?php

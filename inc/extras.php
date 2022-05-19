@@ -309,6 +309,38 @@ function get_scheduled_activity() {
 
 
 
+add_action( 'wp_ajax_nopriv_get_post_basic_content', 'get_post_basic_content' );
+add_action( 'wp_ajax_get_post_basic_content', 'get_post_basic_content' );
+function get_post_basic_content() {
+  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    $post_id = ($_POST['postid']) ? $_POST['postid'] : 0;
+    $post = get_post($post_id);
+    $html = '';
+    if($post) {
+      ob_start();
+      include(locate_template('parts/popup_content_activity.php'));
+      $html = ob_get_contents();
+      ob_end_clean();
+    }
+    $response['content'] = $html;
+    echo json_encode($response);
+  }
+  else {
+    header("Location: ".$_SERVER["HTTP_REFERER"]);
+  }
+  die();
+}
 
 
+function scheduled_activities_filter($key=null) {
+  $postTypes['festival'] = 'Festival Activities';
+  $postTypes['practices'] = 'Practices';
+  $postTypes['workshops'] = 'Workshops';
+  $postTypes['other'] = 'Other';
+  if($key) {
+    return ( isset($postTypes[$key]) && $postTypes[$key] ) ? $postTypes[$key] : '';
+  } else {
+    return $postTypes;
+  }
+}
 

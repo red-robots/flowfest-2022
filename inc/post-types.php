@@ -39,14 +39,6 @@ function js_custom_init() {
             'single'    => 'Practice',
             'menu_icon' => 'dashicons-location',
             'supports'  => array('title','editor')
-        ),
-        array(
-            'post_type' => 'schedule',
-            'menu_name' => 'Schedules',
-            'plural'    => 'Schedules',
-            'single'    => 'Schedule',
-            'menu_icon' => 'dashicons-calendar-alt',
-            'supports'  => array('title')
         )
     );
     

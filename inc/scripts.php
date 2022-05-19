@@ -12,7 +12,7 @@ function bellaworks_scripts() {
     wp_enqueue_script('jquery', false, array(), false, false);
 	
 
-	wp_enqueue_script( 
+	 wp_enqueue_script( 
 			'bellaworks-blocks', 
 			get_template_directory_uri() . '/assets/js/vendors.min.js', 
 			array(), '20120206', 
@@ -25,6 +25,13 @@ function bellaworks_scripts() {
       array(), '20220514', 
       true 
     );
+
+  wp_enqueue_script( 
+    'bellaworks-select', 
+    get_template_directory_uri() . '/assets/js/vendors/select2.min.js', 
+    array(), '20220101', 
+    true 
+  );
 
 	wp_enqueue_script( 
 			'bellaworks-custom', 
