@@ -10,10 +10,11 @@ if($dateTime) {
 }
 $content = $post->post_content;
 apply_filters('the_content',$content);
+$flexClass = ($img) ? 'half':'full';
 ?>
 <div class="popup-content">
   <div class="middle-content">
-    <div class="flex-wrap">
+    <div class="flex-wrap <?php echo $flexClass ?>">
       <div class="text">
         <h2 class="title"><?php echo $post->post_title; ?></h2>
 

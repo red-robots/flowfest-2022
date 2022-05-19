@@ -1337,6 +1337,11 @@ body.popup-open {
           height: auto;
         }
       }
+      &.full {
+        .text, .photo {
+          width: 100%;
+        }
+      }
     }
     .title {
       font-family: $font2;
@@ -1354,11 +1359,12 @@ body.popup-open {
     }
 
     &.activity {
+      max-width: 900px;
       .title {
         margin: 0 0 20px;
       }
       .middle-content {
-        padding: 30px 30px;
+        padding: 40px 30px;
       }
       figure, .wp-block-image {
         margin: 0 0 30px;
@@ -1381,6 +1387,18 @@ body.popup-open {
           background: rgba(255,255,255,.75);
         }
       }
+      .flex-wrap.full {
+        .text {
+          padding: 0 0;
+        }
+      }
+      .flex-wrap.half {
+        .text {
+          @include tab {
+            padding: 0 30px 0 0;
+          }
+        }
+      }
     }
   }
 
@@ -1389,10 +1407,10 @@ body.popup-open {
     width: 25px;
     height: 25px;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    transform: scale(0.85);
+    transform: scale(0.75);
     span {
       overflow: hidden;
       display: block;
@@ -2061,7 +2079,10 @@ section.faqs {
 }
 
 body.logged-in.admin-bar {
-  #popup-content{padding-top:80px;}
+  // #popup-content .popup-content {
+  //   margin-top: 10vh;
+  //   margin-bottom: 10vh;
+  // }
 }
 
 /* MOBILE < 768 */
