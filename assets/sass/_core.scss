@@ -1562,6 +1562,106 @@ body.page-template-page-repeatable-blocks {
   }
 }
 
+.contact-info-group {
+  padding: 50px 0;
+  position: relative;
+  .info {
+    h3 {
+      margin: 0 0;
+      font-family: $font2;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.1;
+      color: $color-green;
+    }
+
+    p {
+      margin: 0 0 1em;
+    }
+  }
+  .flexcol {
+    position: relative;
+    .inside {
+      position: relative;
+      z-index: 15;
+    }
+    &.contact {
+      background: $color-green;
+      @include flexgroup();
+      @include flexbox-justify(center);
+      @include flexbox-align-items(center);
+      .inside {
+        width: 100%;
+        padding: 30px;
+        color: #FFF;
+      }
+      h3 {
+        color: #FFF;
+        font-size: 25px;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .info {
+        margin: 30px 0;
+      }
+      a {
+        color: $color-gold;
+        &:hover {
+          color: tint($color-gold,30%);
+        }
+      }
+      &.floral-pattern:before {
+        opacity: .05;
+      }
+    }
+    &.map {
+      background: $color-gold;
+      padding: 5vw;
+      .inside {
+        background: #F0F3F4;
+      }
+      iframe {
+        width: 100%!important;
+        height: 100%!important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+    }
+    img.iframe-resizer {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &.half {
+    .flexwrap {
+      @include flexgroup();
+    }
+    .flexcol {
+      width: 100%;
+      @include tab {
+        width: 50%;
+      }
+    }
+  }
+}
+
+/* SOCIAL MEDIA */
+.social-media-links {
+  div {
+    display: inline-block;
+    a {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 2em;
+      line-height: 1;
+      margin: 5px 8px;
+    }
+  }
+}
+
 /* FOOTER */
 .site-footer {
   .footer-logo {

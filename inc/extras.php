@@ -130,11 +130,29 @@ function get_instagram_setup() {
 function get_social_links() {
     $social_types = social_icons();
     $social = array();
-    foreach($social_types as $k=>$icon) {
-        $value = get_field($k,'option');
-        if($value) {
-            $social[$k] = array('link'=>$value,'icon'=>$icon);
+    // foreach($social_types as $k=>$icon) {
+    //     $value = get_field($k,'option');
+    //     if($value) {
+    //         $social[$k] = array('link'=>$value,'icon'=>$icon);
+    //     }
+    // }
+    $links = get_field('social_media_links','option');
+    if($links) {
+      foreach($social_types as $type=>$icon) {
+        foreach($links as $obj) {
+          if( $url = $obj['link'] ) {
+            if (strpos($url, $type) !== false) {
+              $social[$type] = array(
+                      'icon'=>$icon,
+                      'name'=>ucwords($type),
+                      'link'=>$url
+                    );
+            }
+          }
         }
+      }
+
+      
     }
     return $social;
 }
@@ -343,4 +361,39 @@ function scheduled_activities_filter($key=null) {
     return $postTypes;
   }
 }
+
+
+/* SOCIAL MEDIA SHORTCODE */
+add_shortcode( 'display_social_media', 'display_social_media_func' );
+function display_social_media_func( $atts ){
+  $a = shortcode_atts( array(
+    'exclude' => '',
+  ), $atts );
+  
+  $exclude = (isset($a['exclude']) && $a['exclude']) ? explode(',',$a['exclude']) : '';
+  $links = get_social_links();
+  if($exclude) {
+    foreach($links as $k=>$v) {
+      if(in_array($k,$exclude)) {
+        unset($links[$k]);
+      }
+    }
+  } 
+
+  $output = '';
+  ob_start();
+  if($links) { ?>
+    <div class="social-media-links">
+      <?php foreach ($links as $key=>$val) { ?>
+        <div><a href="<?php echo $val['link'] ?>" target="_blank" class="<?php echo $key ?>-link" aria-label="<?php echo $val['name'] ?>"><i class="<?php echo $val['icon'] ?>"></i></a></div>
+      <?php } ?>
+    </div>
+  <?php }
+  $output = ob_get_contents();
+  ob_end_clean();
+  
+  return $output;
+}
+
+
 

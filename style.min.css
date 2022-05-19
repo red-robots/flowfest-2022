@@ -1660,6 +1660,26 @@ body.page-template-page-repeatable-blocks .repeatable-block-page{margin:30px 0;w
 .repeatable-content-blocks figure{margin:0;background-size:cover;background-position:center;background-repeat:no-repeat}
 .repeatable-content-blocks figure img{width:100%;height:auto}
 #main .hentry h1.entry-title{font-family:"Letter Magic",serif;font-size:3em;font-weight:normal;line-height:1.2;margin:0 0 30px;text-transform:uppercase}
+.contact-info-group{padding:50px 0;position:relative}
+.contact-info-group .info h3{margin:0;font-family:"Letter Magic",serif;font-size:20px;font-weight:normal;line-height:1.1;color:#035455}
+.contact-info-group .info p{margin:0 0 1em}
+.contact-info-group .flexcol{position:relative}
+.contact-info-group .flexcol .inside{position:relative;z-index:15}
+.contact-info-group .flexcol.contact{background:#035455;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.contact-info-group .flexcol.contact .inside{width:100%;padding:30px;color:#fff}
+.contact-info-group .flexcol.contact h3{color:#fff;font-size:25px;line-height:1.2;text-transform:uppercase;letter-spacing:1px}
+.contact-info-group .flexcol.contact .info{margin:30px 0}
+.contact-info-group .flexcol.contact a{color:#b3a759}
+.contact-info-group .flexcol.contact a:hover{color:#cac18b}
+.contact-info-group .flexcol.contact.floral-pattern:before{opacity:.05}
+.contact-info-group .flexcol.map{background:#b3a759;padding:5vw}
+.contact-info-group .flexcol.map .inside{background:#f0f3f4}
+.contact-info-group .flexcol.map iframe{width:100% !important;height:100% !important;position:absolute;top:0;left:0;z-index:10}
+.contact-info-group .flexcol img.iframe-resizer{width:100%;height:auto}
+.contact-info-group.half .flexwrap{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
+.contact-info-group.half .flexcol{width:100%}
+.social-media-links div{display:inline-block}
+.social-media-links div a{display:inline-block;text-decoration:none;font-size:2em;line-height:1;margin:5px 8px}
 .site-footer .footer-logo img{width:auto;height:20px;float:left;opacity:.5}
 .content-default-template #main{min-height:20em;padding:10px 0}
 .content-default-template #main .hentry{padding-bottom:10px}
@@ -1773,6 +1793,7 @@ section.home-cards-new .card .card-info{min-height:40px}
 .repeatable-content-blocks .half .imagecol{width:60%}
 .repeatable-content-blocks .half.even{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}
 .repeatable-content-blocks figure{height:100%}
+.contact-info-group.half .flexcol{width:50%}
 .galleries figure{padding:15px;width:33.333%}
 .galleries figure.type_video span.image .arrow{border:3px solid #fff;width:5vw;height:5vw}
 .galleries figure.type_video span.image .arrow:before{border-left:25px solid #fff;border-top:15px solid rgba(0,0,0,0);border-bottom:15px solid rgba(0,0,0,0);margin-left:5px}
