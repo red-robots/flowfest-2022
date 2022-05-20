@@ -694,6 +694,7 @@ section.pagetitle {
   }
   .wrapper {
     position: relative;
+    min-height: 40px;
     height: 100%;
     padding: 10px 15px;
     @include tab {
@@ -1648,6 +1649,69 @@ body.page-template-page-repeatable-blocks {
   }
 }
 
+/* SITEMAP */
+#sitemap-wrap {
+  ul#sitemap {
+    max-width: 700px;
+    width: 100%;
+    margin: 6% auto;
+    padding: 0 0;
+    list-style: none;
+    @include tab {
+      column-count: 2;
+    }
+    a {
+      font-size: 18px;
+      color: $color-green;
+      text-decoration: none;
+      &:hover {
+        color: $color-gold;
+      }
+    }
+    > li {
+      margin: 3px 0;
+    }
+    ul {
+      margin: 0 0;
+      padding: 0 0 0 15px;
+      list-style: none;
+      li {
+        position: relative;
+        padding-left: 18px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        margin-bottom: 1px;
+        &:before {
+          content:"";
+          display: block;
+          width: 1px;
+          height: 100%;
+          border-left: 1px dotted #828282;
+          position: absolute;
+          top: -1px;
+          left: 0;
+        }
+        &:after {
+          content:"";
+          display: block;
+          width: 15px;
+          height: 1px;
+          border-bottom: 1px dotted #828282;
+          position: absolute;
+          left: 0;
+          top: 40%;
+          transform: translateY(-40%);
+        }
+        &.last {
+          &:before {
+            height: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* SOCIAL MEDIA */
 .social-media-links {
   div {
@@ -1658,6 +1722,52 @@ body.page-template-page-repeatable-blocks {
       font-size: 2em;
       line-height: 1;
       margin: 5px 8px;
+    }
+  }
+}
+
+/* 404 */
+body.error404 {
+  #content {
+    width: 100%;
+    float: left;
+    min-height: 40em;
+  }
+  section.error-404 {
+    margin: 5% auto 30px;
+    text-align: center;
+    font-size: 20px;
+    h1 {
+      font-family: $font2;
+      font-size: 1.8em;
+      line-height: 1.2;
+      color: $color-brown;
+      margin: 0 0;
+      position: relative;
+      top: 6px;
+      @include tab {
+        font-size: 2.1em;
+      }
+    }
+  }
+  #sitemap-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+    @include tab {
+      margin-bottom: 0;
+    }
+    ul#sitemap {
+      margin-top: 20px;
+      max-width: unset;
+      width: auto;
+      display: inline-block;
+      text-align: left;
+    }
+    ul#sitemap > li {
+      padding:0 0;
+      @include tab {
+        padding:0 3vw;
+      }
     }
   }
 }

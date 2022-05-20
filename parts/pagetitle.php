@@ -2,8 +2,7 @@
 $register = get_field('register_button_link','option');
 $register_button_text = (isset($register['title']) && $register['title']) ? $register['title'] : '';
 $register_button_link = (isset($register['url']) && $register['url']) ? $register['url'] : '';
-$register_button_target = (isset($register['target']) && $register['target']) ? $register['target'] : '_self';
-?>
+$register_button_target = (isset($register['target']) && $register['target']) ? $register['target'] : '_self'; ?>
 <section class="pagetitle">
 	<div class="wrapper pagetitle-flex">
   <?php if($register_button_text && $register_button_link) { ?>
