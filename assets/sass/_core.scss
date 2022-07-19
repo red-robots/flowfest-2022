@@ -139,7 +139,8 @@ header.site-header {
     }
   }
 }
-body.home #site-logo {display:none;}
+// body.home #site-logo {display:none;}
+body.home h1.page-title {display:none;}
 nav.main-navigation,
 nav.main-navigation .primary-menu-wrap,
 nav.main-navigation #primary-menu {
