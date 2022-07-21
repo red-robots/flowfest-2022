@@ -87,6 +87,9 @@ body {
 		align-items: center;
 	}
 }
+.pagetitle-flex {
+	// padding: 20px 0;
+}
 header.site-header {
   position: relative;
 	width: 100%;
@@ -694,8 +697,10 @@ footer.site-footer {
 }
 section.pagetitle {
 	background-color: $color-orange;
+
   @include tab {
-    height: 40px;
+    height: 60px;
+    // padding: 10px 0;
   }
   h1 {
     display: block;
