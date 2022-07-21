@@ -10,6 +10,7 @@ $videoHelper = THEMEURI . 'images/rectangle-narrow.png';
 $is_subpage = (is_home() || is_front_page()) ? false : true;
 $top_notification = get_field("top_notification",$post_id);
 $banner = get_field("full_image",$post_id);
+$logoOverlay = get_field('logo_overlay');
 
 
 $is_single_post = ( is_single() ) ? true : false;
@@ -59,6 +60,7 @@ if ( is_singular( get_post_type() ) && in_array(get_post_type(),$excludePostType
 					$featuredType = ( isset($row['video_or_image']) && $row['video_or_image'] ) ? $row['video_or_image'] : ''; ?>
 					<?php if( $featuredType=='video' && ($row['video']||$row['native_video']) ) { ?>
 						<li class="slideItem <?php echo $slideType; ?>">
+							<?php include(locate_template('parts/slideshow-overlay.php')); ?>
 							<div class="iframe-wrapper <?php echo ($row['mobile_video']||$row['mobile_image'])?'yes-mobile':'no-mobile';?>">
 		                            <?php if($row['link']):?>
 								    <a href="<?php echo $row['link']; ?>" class="slideLink" <?php if ( $row['target'] ):echo 'target="_blank"'; endif; ?>></a>
@@ -153,6 +155,7 @@ if ( is_singular( get_post_type() ) && in_array(get_post_type(),$excludePostType
 					<?php } 
 					elseif($featuredType=='image' && $row['image']) { ?>
 					<li class="slideItem <?php echo $slideType; ?>">
+						<?php include(locate_template('parts/slideshow-overlay.php')); ?>
 						<div class="image-wrapper <?php echo $row['mobile_image']?'yes-mobile':'no-mobile';?>"
 						     style="background-image: url(<?php if($row['mobile_image']):
 							     echo $row['mobile_image']['url'];

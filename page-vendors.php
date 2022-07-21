@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Vendors
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -15,6 +15,7 @@
 get_header(); 
 
 $CS = get_field('coming_soon'); 
+$vendors = get_field('vendors'); 
 // echo '<pre>';
 // print_r($CS);
 // echo '</pre>';
@@ -37,6 +38,19 @@ $CS = get_field('coming_soon');
 						<div class="entry-content vendorz">
 							<?php the_content(); ?>
 						</div><!-- .entry-content -->
+						<?php if( $vendors ) { ?>
+							<section class="vendors">
+								<?php foreach( $vendors as $v ) { 
+									// echo '<pre>';
+									// print_r($v);
+									// echo '</pre>';
+									?>
+									<div class="ven">
+										<img src="<?php echo $v['url'] ?>" alt="<?php echo $v['alt'] ?>">
+									</div>
+								<?php } ?>
+							</section>
+						<?php } ?>
 					<?php } ?>
 
 				</article><!-- #post-## -->

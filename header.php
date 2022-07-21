@@ -43,6 +43,11 @@
   <div class="mobile-navigation floral-pattern"></div>
 
 	<?php get_template_part('parts/pagetitle');?>
-	<?php get_template_part('parts/banner'); ?>
+	<?php 
+  $CS = get_field('coming_soon'); 
+  if( $CS[0] == '' ) {
+    get_template_part('parts/banner');
+  } 
+  ?>
 
 	<div id="content" class="site-content">
