@@ -15,12 +15,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="overlay"></div>
+<div id="popup-content"></div>
+
 <div id="page" class="site cf">
-	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
-  
-  <div id="overlay"></div>
-  <div id="popup-content"></div>
-	
+	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>	
   <header id="masthead" class="site-header floral-pattern" role="banner">
 		<div class="wrapper head-flex">
 			

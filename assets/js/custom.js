@@ -158,6 +158,12 @@ jQuery(document).ready(function ($) {
           $('body').removeClass('popup-open');
           $('#overlay').removeClass('show');
         });
+        $('#closePopUp').on('click', function () {
+          $('#popup-content').removeClass('show');
+          $('#overlay').removeClass('show');
+          $('body').removeClass('popup-open');
+          $('#popup-content').html("");
+        });
       }
     });
   });
