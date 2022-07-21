@@ -2418,10 +2418,10 @@ section.vendors {
 	div.ven {
 		flex-basis: 40%;
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		flex-direction: column;
+		justify-content: center;
 		align-items: stretch;
+		margin-bottom: 40px;
 		img {
 			width: 100%;
 		}
