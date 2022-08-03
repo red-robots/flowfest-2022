@@ -2596,6 +2596,15 @@ section.vendors {
 
 }
 /* end MOBILE < 768 */
+.gform-body, .gform_footer {
+	input, textarea, select {
+		color: #000;
+	}
+}
+.gform_legacy_markup_wrapper span.ginput_total {
+		color: #fff !important;
+	
+}
 
 
 

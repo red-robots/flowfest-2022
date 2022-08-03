@@ -1776,6 +1776,8 @@ section.coming-soon{width:100%;height:50vh;display:-webkit-box;display:-ms-flexb
 section.vendors{width:100%;background-color:rgba(255,255,255,0.6);padding:20px}
 section.vendors div.ven{-ms-flex-preferred-size:40%;flex-basis:40%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;margin-bottom:40px}
 section.vendors div.ven img{width:100%}
+.gform-body input,.gform-body textarea,.gform-body select,.gform_footer input,.gform_footer textarea,.gform_footer select{color:#000}
+.gform_legacy_markup_wrapper span.ginput_total{color:#fff !important}
 @media(min-width:767px){.wrapper{padding:0}
 .head-flex,.foot-flex,.pagetitle-flex{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 header.site-header .wrapper{height:100%}
