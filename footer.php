@@ -16,7 +16,9 @@
 		<div class="wrapper	foot-flex">
       <?php if ( $footer_logo ) { ?>
       <div class="footer-logo">
-        <img src="<?php echo $footer_logo['url'] ?>" alt="<?php echo $footer_logo['title'] ?>">
+      	<a href="https://whitewater.org" target="_blank">
+        	<img src="<?php echo $footer_logo['url'] ?>" alt="<?php echo $footer_logo['title'] ?>">
+        </a>
       </div>
       <?php } ?>
 			
